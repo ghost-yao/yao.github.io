@@ -21,27 +21,33 @@
 </style>
 
 </head>
-<body>
-    <h1>哦哟,这可是我的第一次创建网页尝试哦~~</h1>
+<body style="margin:0; display:flex;">
 
-   <div style="width: 100%; display: flex; justify-content: center; margin-top: 20px;">
-    <iframe 
-        style="width: 100%; max-width: 900px; height: 50vw; max-height: 500px;"
-        src="https://player.bilibili.com/player.html?bvid=BV1zi6fBPE7v"
-        frameborder="0"
-        allowfullscreen>
-    </iframe>
-
+    <!-- 左侧侧边栏 -->
+    <div style="
+        width: 200px;
+        height: 100vh;
+        background: #2c3e50;
+        color: white;
+        padding-top: 40px;
+        position: fixed;
+        left: 0;
+        top: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-family: 'Microsoft YaHei';
+    ">
+        <a href="video.html" style="color:white; text-decoration:none; margin:20px 0; font-size:20px;">视频</a>
+        <a href="material.html" style="color:white; text-decoration:none; margin:20px 0; font-size:20px;">素材</a>
+        <a href="photo.html" style="color:white; text-decoration:none; margin:20px 0; font-size:20px;">照片</a>
     </div>
-    <div style="width: 100%; display: flex; justify-content: center; margin-top: 20px;">
-    <iframe 
-        style="width: 100%; max-width: 900px; height: 50vw; max-height: 500px;"
-        src="https://player.bilibili.com/player.html?bvid=BV1oF6fBZELx"
-        frameborder="0"
-        allowfullscreen>
-    </iframe>
-</div>
 
+    <!-- 右侧内容区 -->
+    <div style="margin-left:200px; padding:40px; width:100%;">
+        <h1>欢迎来到我的展示网页</h1>
+        <p>请选择左侧的模块查看内容</p>
+    </div>
 
 </body>
 
