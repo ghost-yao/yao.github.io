@@ -3,49 +3,70 @@
 <head>
     <meta charset="UTF-8">
     <title>视频页面</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #e8f3ff, #faf7f2);
+            background-attachment: fixed;
+            font-family: "Microsoft YaHei", sans-serif;
+        }
+
+        /* 左侧导航栏样式 */
+        .sidebar {
+            width: 200px;
+            height: 100vh;
+            background: #2c3e50;
+            color: white;
+            padding-top: 40px;
+            position: fixed;
+            left: 0;
+            top: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .sidebar a {
+            color: white;
+            text-decoration: none;
+            margin: 20px 0;
+            font-size: 20px;
+        }
+
+        .sidebar a:hover {
+            color: #1abc9c;
+            transition: 0.3s;
+        }
+
+        /* 右侧内容区 */
+        .content {
+            margin-left: 200px;
+            padding: 40px;
+        }
+    </style>
 </head>
-<body style="margin:0; padding:40px; margin-left:200px; background: linear-gradient(135deg, #e8f3ff, #faf7f2);">
 
-    <h1>视频展示</h1>
+<body>
 
-    <div style="width: 100%; display: flex; justify-content: center; margin-top: 20px;">
-        <iframe 
-            style="width: 100%; max-width: 900px; height: 50vw; max-height: 500px;"
-            src="https://player.bilibili.com/player.html?bvid=BV1zi6fBPE7v&autoplay=1&loop=1&playlist=BV1zi6fBPE7v"
-            frameborder="0"
-            allowfullscreen>
-        </iframe>
+    <!-- 左侧导航栏 -->
+    <div class="sidebar">
+        <a href="index.html">首页</a>
+        <a href="video.html">视频</a>
+        <a href="material.html">素材</a>
+        <a href="photo.html">照片</a>
     </div>
 
-    <div style="width: 100%; display: flex; justify-content: center; margin-top: 20px;">
-        <iframe 
-            style="width: 100%; max-width: 900px; height: 50vw; max-height: 500px;"
-            src="https://player.bilibili.com/player.html?bvid=BV1oF6fBZELx&autoplay=1&loop=1&playlist=BV1oF6fBZELx"
-            frameborder="0"
-            allowfullscreen>
-        </iframe>
-    </div>
+    <!-- 右侧内容区 -->
+    <div class="content">
 
-    <!-- Giscus 评论区开始 -->
-    <script src="https://giscus.app/client.js"
-        data-repo="ghost-yao/ghost-yao.github.io"
-        data-repo-id="R_kgDOQ31Zfg"
-        data-category="Announcements"
-        data-category-id="DIC_kwDOQ31Zfs4C02gM"
-        data-mapping="pathname"
-        data-strict="0"
-        data-reactions-enabled="1"
-        data-emit-metadata="0"
-        data-input-position="bottom"
-        data-theme="light"
-        data-lang="zh-CN"
-        data-loading="lazy"
-        crossorigin="anonymous"
-        async>
-    </script>
-    <!-- Giscus 评论区结束 -->
+        <h1>视频展示</h1>
 
-</body>
-</html>
-
-
+        <div style="width: 100%; display: flex; justify-content: center; margin-top: 20px;">
+            <iframe 
+                style="width: 100%; max-width: 900px; height: 50vw; max-height: 500px;"
+                src="https://player.bilibili.com/player.html?bvid=BV1zi6fBPE7v&autoplay=1&loop=1&playlist=BV1zi6fBPE7v"
+                frameborder="0"
+                allowfullscreen>
+            </iframe>
