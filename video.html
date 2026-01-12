@@ -113,7 +113,7 @@
         <!-- Giscus 评论区结束 -->
 
     </div>
- <!-- 背景音乐（静音自动播放） -->
+<!-- 背景音乐 -->
 <audio id="bgm" 
        src="https://pub-5efa0d5e4e664fffb87c7ddd05564df6.r2.dev/music/malanghua.mp3" 
        autoplay 
@@ -125,10 +125,13 @@
 document.addEventListener("click", function () {
     const bgm = document.getElementById("bgm");
     if (bgm && bgm.paused) {
+        bgm.muted = false;
+        bgm.volume = 0.1;
         bgm.play();
     }
 }, { once: true });
 
+// 视频点击播放
 document.querySelectorAll(".video-container").forEach(container => {
     container.onclick = function () {
 
@@ -150,16 +153,7 @@ document.querySelectorAll(".video-container").forEach(container => {
     };
 });
 </script>
-    <script>
-    document.addEventListener("click", function () {
-        const audio = document.getElementById("bgm");
-        audio.muted = false;
-        audio.volume = 0.1; // 🎵 音量大小（0.0 ~ 1.0），你可以改
-        audio.play();
-    }, { once: true });
-</script>
 
-</script>
              <script>
 document.querySelectorAll(".video-container").forEach(container => {
     container.onclick = function () {
