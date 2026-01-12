@@ -117,19 +117,26 @@
 <audio id="bgm" 
        src="https://pub-5efa0d5e4e664fffb87c7ddd05564df6.r2.dev/music/malanghua.mp3" 
        autoplay 
-       loop 
-       muted>
+       loop>
 </audio>
 
 <script>
+// 用户第一次点击页面时播放背景音乐
+document.addEventListener("click", function () {
+    const bgm = document.getElementById("bgm");
+    if (bgm && bgm.paused) {
+        bgm.play();
+    }
+}, { once: true });
+
 document.querySelectorAll(".video-container").forEach(container => {
     container.onclick = function () {
 
-        // ① 点击视频时暂停背景音乐
+        // 点击视频时暂停背景音乐
         const bgm = document.getElementById("bgm");
         if (bgm) bgm.pause();
 
-        // ② 加载 B 站播放器
+        // 加载 B 站播放器
         const bvid = this.getAttribute("data-bvid");
         this.innerHTML = `
             <iframe 
@@ -142,6 +149,8 @@ document.querySelectorAll(".video-container").forEach(container => {
         this.style.cursor = "default";
     };
 });
+</script>
+
 </script>
              <script>
 document.querySelectorAll(".video-container").forEach(container => {
