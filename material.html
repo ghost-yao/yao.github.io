@@ -141,15 +141,46 @@
        loop 
        muted>
 </audio>
+    <div id="music-toggle"
+     style="position: fixed; bottom: 20px; right: 20px;
+            background: #ffffffcc; padding: 10px 15px;
+            border-radius: 8px; cursor: pointer;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+            font-size: 14px; user-select: none;">
+    🔊 音乐开关
+</div>
+
 
 <script>
-    document.addEventListener("click", function () {
-        const audio = document.getElementById("bgm");
-        audio.muted = false;
-        audio.volume = 0.1; // 🎵 音量大小（0.0 ~ 1.0），你可以改
-        audio.play();
-    }, { once: true });
+// 页面加载时设置默认音量
+const bgm = document.getElementById("bgm");
+bgm.volume = 0.1;
+
+// 用户第一次点击页面时播放背景音乐
+document.addEventListener("click", function () {
+    if (bgm.paused) {
+        bgm.muted = false;
+        bgm.play();
+    }
+}, { once: true });
+
+// 手动开关音乐
+const toggle = document.getElementById("music-toggle");
+
+toggle.onclick = function () {
+    if (bgm.muted || bgm.volume === 0) {
+        // 恢复音乐
+        bgm.muted = false;
+        bgm.volume = 0.1;
+        toggle.textContent = "🔊 音乐开关";
+    } else {
+        // 关闭音乐
+        bgm.muted = true;
+        toggle.textContent = "🔇 音乐已关闭";
+    }
+};
 </script>
+
 
 
 </body>
