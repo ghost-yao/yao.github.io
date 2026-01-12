@@ -121,12 +121,14 @@
 </audio>
 
 <script>
+// 页面加载时就设置音量（关键）
+const bgm = document.getElementById("bgm");
+bgm.volume = 0.03;
+
 // 用户第一次点击页面时播放背景音乐
 document.addEventListener("click", function () {
-    const bgm = document.getElementById("bgm");
-    if (bgm && bgm.paused) {
+    if (bgm.paused) {
         bgm.muted = false;
-        bgm.volume = 0.03;
         bgm.play();
     }
 }, { once: true });
@@ -134,12 +136,8 @@ document.addEventListener("click", function () {
 // 视频点击播放
 document.querySelectorAll(".video-container").forEach(container => {
     container.onclick = function () {
+        if (!bgm.paused) bgm.pause();
 
-        // 点击视频时暂停背景音乐
-        const bgm = document.getElementById("bgm");
-        if (bgm) bgm.pause();
-
-        // 加载 B 站播放器
         const bvid = this.getAttribute("data-bvid");
         this.innerHTML = `
             <iframe 
@@ -149,7 +147,6 @@ document.querySelectorAll(".video-container").forEach(container => {
                 allowfullscreen>
             </iframe>
         `;
-        this.style.cursor = "default";
     };
 });
 </script>
