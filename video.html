@@ -121,7 +121,7 @@
 </audio>
 
 <script>
-// 页面加载时就设置音量（关键）
+// 页面加载时设置默认音量
 const bgm = document.getElementById("bgm");
 bgm.volume = 0.1;
 
@@ -132,6 +132,22 @@ document.addEventListener("click", function () {
         bgm.play();
     }
 }, { once: true });
+
+// 手动开关音乐
+const toggle = document.getElementById("music-toggle");
+
+toggle.onclick = function () {
+    if (bgm.muted || bgm.volume === 0) {
+        // 恢复音乐
+        bgm.muted = false;
+        bgm.volume = 0.1;
+        toggle.textContent = "🔊 音乐开关";
+    } else {
+        // 关闭音乐
+        bgm.muted = true;
+        toggle.textContent = "🔇 音乐已关闭";
+    }
+};
 
 // 视频点击播放
 document.querySelectorAll(".video-container").forEach(container => {
