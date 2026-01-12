@@ -91,22 +91,7 @@
 </div>
 
 
-        <script>
-document.querySelectorAll(".video-container").forEach(container => {
-    container.onclick = function () {
-        const bvid = this.getAttribute("data-bvid");
-        this.innerHTML = `
-            <iframe 
-                style="width: 100%; height: 100%;"
-                src="https://player.bilibili.com/player.html?bvid=${bvid}&autoplay=1&loop=1&playlist=${bvid}&muted=1"
-                frameborder="0"
-                allowfullscreen>
-            </iframe>
-        `;
-        this.style.cursor = "default";
-    };
-});
-</script>
+       
 
         <!-- Giscus 评论区开始 -->
         <script src="https://giscus.app/client.js"
@@ -158,6 +143,21 @@ document.querySelectorAll(".video-container").forEach(container => {
     };
 });
 </script>
-
+             <script>
+document.querySelectorAll(".video-container").forEach(container => {
+    container.onclick = function () {
+        const bvid = this.getAttribute("data-bvid");
+        this.innerHTML = `
+            <iframe 
+                style="width: 100%; height: 100%;"
+                src="https://player.bilibili.com/player.html?bvid=${bvid}&autoplay=1&loop=1&playlist=${bvid}&muted=1"
+                frameborder="0"
+                allowfullscreen>
+            </iframe>
+        `;
+        this.style.cursor = "default";
+    };
+});
+</script>
 </body>
 </html>
