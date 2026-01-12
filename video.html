@@ -157,6 +157,18 @@ toggle.onclick = function () {
         toggle.textContent = "🔇 音乐已关闭";
     }
 };
+    // 监听 iframe 点击，恢复背景音乐
+document.addEventListener("click", function (e) {
+    const iframe = document.querySelector("iframe");
+
+    // 如果 iframe 存在，并且用户点击了 iframe
+    if (iframe && iframe.contains(e.target)) {
+        // 如果背景音乐是暂停状态，并且用户没有手动关闭音乐
+        if (bgm.paused && !bgm.muted) {
+            bgm.play();
+        }
+    }
+});
 
 // 视频点击播放
 document.querySelectorAll(".video-container").forEach(container => {
