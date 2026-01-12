@@ -74,3 +74,66 @@
         }
 
         /* 图片样式 */
+        .item img {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        /* 视频样式 */
+        .item video {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        /* 响应式 */
+        @media (max-width: 900px) {
+            .masonry {
+                column-count: 2;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .masonry {
+                column-count: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- 左侧侧边栏 -->
+    <div class="sidebar">
+        <a href="index.html">首页</a>
+        <a href="video.html">视频</a>
+        <a href="material.html">素材</a>
+        <a href="photo.html">照片</a>
+    </div>
+
+    <!-- 右侧内容区 -->
+    <div class="content">
+        <h1>素材展示（Pinterest 风格瀑布流）</h1>
+
+        <div class="masonry">
+
+            <!-- 你的视频素材（示例） -->
+            <div class="item">
+                <video src="https://pub-5efa0d5e4e664fffb87c7ddd05564df6.r2.dev/DJI_20250904143150_0090_D.MP4" controls></video>
+            </div>
+
+            <!-- 你可以继续添加更多素材，只要复制下面这一段 -->
+            <!--
+            <div class="item">
+                <img src="你的图片URL">
+            </div>
+
+            <div class="item">
+                <video src="你的视频URL" controls></video>
+            </div>
+            -->
+
+        </div>
+    </div>
+
+</body>
+</html>
