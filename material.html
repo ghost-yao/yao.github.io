@@ -2,17 +2,17 @@
 <html lang="zh">
 <head>
     <meta charset="UTF-8">
-    <title>素材页面</title>
+    <title>素材展示</title>
 
     <style>
         body {
             margin: 0;
             padding: 0;
-            background: linear-gradient(135deg, #e8f3ff, #faf7f2);
-            background-attachment: fixed;
+            background: linear-gradient(135deg, #f0f4ff, #d6e4ff, #f0f4ff);
             font-family: "Microsoft YaHei", sans-serif;
         }
 
+        /* 左侧固定侧边栏 */
         .sidebar {
             width: 200px;
             height: 100vh;
@@ -39,26 +39,38 @@
             transition: 0.3s;
         }
 
+        /* 右侧内容区 */
         .content {
             margin-left: 200px;
             padding: 40px;
         }
-    </style>
-</head>
 
-<body>
+        h1 {
+            text-align: center;
+            color: #333;
+        }
 
-    <div class="sidebar">
-        <a href="index.html">首页</a>
-        <a href="video.html">视频</a>
-        <a href="material.html">素材</a>
-        <a href="photo.html">照片</a>
-    </div>
+        /* 瀑布流容器 */
+        .masonry {
+            column-count: 3;
+            column-gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
 
-    <div class="content">
-        <h1>素材展示</h1>
-        <p>这里以后可以放你的素材内容</p>
-    </div>
+        /* 每个素材卡片 */
+        .item {
+            break-inside: avoid;
+            margin-bottom: 20px;
+            background: rgba(255,255,255,0.6);
+            padding: 10px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
 
-</body>
-</html>
+        .item:hover {
+            transform: scale(1.03);
+        }
+
+        /* 图片样式 */
