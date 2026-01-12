@@ -102,14 +102,28 @@
         <!-- Giscus 评论区结束 -->
 
     </div>
-  <!-- 背景音乐标签保留，但不自动播放、不解锁声音 -->
+ <!-- 背景音乐（静音自动播放） -->
 <audio id="bgm" 
-       src="https://pub-5efa0d5e4e664fffb87c7ddd05564df6.r2.dev/music/%E5%A0%95.mp3">
+       src="https://pub-5efa0d5e4e664fffb87c7ddd05564df6.r2.dev/music/%E5%A0%95.mp3" 
+       autoplay 
+       loop 
+       muted>
 </audio>
 
 <script>
-    // 这个页面不播放背景音乐，所以不需要任何点击事件，也不需要 autoplay
-    // 如果你以后想加按钮单独控制，也可以在这里写逻辑
+    const bgm = document.getElementById("bgm");
+
+    // 用户第一次点击页面后，播放背景音乐
+    document.addEventListener("click", function () {
+        bgm.muted = false;
+        bgm.volume = 0.1;
+        bgm.play();
+
+        // 2 秒后自动暂停背景音乐（此时视频也开始播放了）
+        setTimeout(() => {
+            bgm.pause();
+        }, 2000);
+    }, { once: true });
 </script>
 
 
