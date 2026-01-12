@@ -24,55 +24,24 @@
             color: #1abc9c;
             transition: 0.3s;
         }
+
         /* 标题入场动画 */
-@keyframes titleFadeUp {
-    0% {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
+        @keyframes titleFadeUp {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
 
-/* 正文淡入动画 */
-@keyframes textFadeIn {
-    0% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
-}
-        /* 打字机效果 */
-@keyframes typing {
-    from { width: 0; }
-    to { width: 100%; }
-}
+        /* 单字淡入动画 */
+        @keyframes fadeChar {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
 
-@keyframes caret {
-    50% { border-color: transparent; }
-}
-/* 单字淡入动画 */
-@keyframes fadeChar {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-        /* 逐字淡入动画 */
-@keyframes fadeChar {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-/* 自动给每个字添加动画延迟 */
-.char {
-    opacity: 0;
-    animation: fadeChar 0.03s ease forwards;
-}
-
-
-
+        /* 每个字的基础样式 */
+        .char {
+            opacity: 0;
+            animation: fadeChar 0.03s ease forwards;
+        }
     </style>
 
 </head>
@@ -117,43 +86,49 @@
             line-height: 1.8;
             font-size: 18px;
             color: #333;
-            text-indent: 2em;      ← 首行缩进两个字
-            text-align: justify;   ← 左右对齐
-
+            text-indent: 2em;
+            text-align: justify;
         ">
             <h2 style="
-    margin-top:0;
-    text-align:center;
-    font-size:32px;
-    font-weight:700;
-    background: linear-gradient(135deg, #6a8dff, #9ecbff);
-    -webkit-background-clip: text;
-    color: transparent;
-    animation: titleFadeUp 1s ease-out forwards;
-">
-    This is me~
-</h2>
+                margin-top:0;
+                text-align:center;
+                font-size:32px;
+                font-weight:700;
+                background: linear-gradient(135deg, #6a8dff, #9ecbff);
+                -webkit-background-clip: text;
+                color: transparent;
+                animation: titleFadeUp 1s ease-out forwards;
+            ">
+                This is me~
+            </h2>
 
-
-           <p style="
-    overflow: hidden;
-    white-space: nowrap;
-    border-right: 3px solid #6a8dff;
-    width: 0;
-    animation: typing 4s steps(40, end) forwards, caret 0.8s step-end infinite;
-">
-    大家好，我是 Yao！欢迎来到我的个人网站。这里会展示我喜欢的视频、收集的素材，以及一些生活中的照片。
-    希望你在这里能找到灵感、快乐，也欢迎随时来看查看我更新的内容。第一次做网页，实在是太难了，
-    依靠着 <span style="white-space: nowrap;">Microsoft Copilot</span> 一步一步的做了两天才堪堪做出这个样子~
-    哈哈，希望大家支持哦！！如果你需要做包装或者剪辑视频，可以联系我哟~~
-</p>
-
-
+            <!-- 逐字动画正文 -->
+            <p id="intro-text">
+                大家好，我是 Yao！欢迎来到我的个人网站。这里会展示我喜欢的视频、收集的素材，以及一些生活中的照片。
+                希望你在这里能找到灵感、快乐，也欢迎随时来看查看我更新的内容。第一次做网页，实在是太难了，
+                依靠着 Microsoft Copilot 一步一步的做了两天才堪堪做出这个样子~
+                哈哈，希望大家支持哦！！如果你需要做包装或者剪辑视频，可以联系我哟~~
+            </p>
         </div>
 
         <p style="text-align:center;">请选择左侧的模块查看内容</p>
 
     </div>
+
+    <!-- 自动拆字脚本 -->
+    <script>
+        const textElement = document.getElementById("intro-text");
+        const text = textElement.innerText.trim();
+        textElement.innerHTML = "";
+
+        text.split("").forEach((char, index) => {
+            const span = document.createElement("span");
+            span.innerText = char;
+            span.classList.add("char");
+            span.style.animationDelay = `${index * 0.03}s`;
+            textElement.appendChild(span);
+        });
+    </script>
 
 </body>
 </html>
