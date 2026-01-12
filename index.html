@@ -59,6 +59,18 @@
     from { opacity: 0; }
     to { opacity: 1; }
 }
+        /* 逐字淡入动画 */
+@keyframes fadeChar {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* 自动给每个字添加动画延迟 */
+.char {
+    opacity: 0;
+    animation: fadeChar 0.03s ease forwards;
+}
+
 
 
     </style>
