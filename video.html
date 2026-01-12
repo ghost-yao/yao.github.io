@@ -102,36 +102,16 @@
         <!-- Giscus 评论区结束 -->
 
     </div>
-   <!-- 背景音乐（静音自动播放） -->
+  <!-- 背景音乐标签保留，但不自动播放、不解锁声音 -->
 <audio id="bgm" 
-       src="https://pub-5efa0d5e4e664fffb87c7ddd05564df6.r2.dev/music/%E5%A0%95.mp3" 
-       autoplay 
-       loop 
-       muted>
+       src="https://pub-5efa0d5e4e664fffb87c7ddd05564df6.r2.dev/music/%E5%A0%95.mp3">
 </audio>
 
 <script>
-    const bgm = document.getElementById("bgm");
-
-    // 用户第一次点击页面后，恢复背景音乐声音
-    document.addEventListener("click", function () {
-        bgm.muted = false;
-        bgm.volume = 0.1;
-        bgm.play();
-    }, { once: true });
-
-    // 当视频 iframe 加载完成（意味着视频开始播放）→ 暂停背景音乐
-    window.addEventListener("load", function () {
-        const iframes = document.querySelectorAll("iframe");
-
-        iframes.forEach(iframe => {
-            iframe.onload = function () {
-                // 视频开始播放 → 暂停背景音乐
-                bgm.pause();
-            };
-        });
-    });
+    // 这个页面不播放背景音乐，所以不需要任何点击事件，也不需要 autoplay
+    // 如果你以后想加按钮单独控制，也可以在这里写逻辑
 </script>
+
 
 
 
