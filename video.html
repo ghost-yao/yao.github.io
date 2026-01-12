@@ -64,23 +64,49 @@
         <h1>视频展示</h1>
         <p>这是之前做过的一些视频</p>
 
-        <div style="width: 100%; display: flex; justify-content: center; margin-top: 20px;">
-            <iframe 
-                style="width: 100%; max-width: 900px; height: 50vw; max-height: 500px;"
-                src="https://player.bilibili.com/player.html?bvid=BV1zi6fBPE7v&autoplay=1&loop=1&playlist=BV1zi6fBPE7v&muted=1"
-                frameborder="0"
-                allowfullscreen>
-            </iframe>
-        </div>
+      <div style="width: 100%; display: flex; justify-content: center; margin-top: 20px;">
+    <div class="video-container" 
+         data-bvid="BV1oF6fBZELx"
+         style="width: 100%; max-width: 900px; height: 50vw; max-height: 500px;
+                background: #000; display: flex; align-items: center; justify-content: center;
+                cursor: pointer; border-radius: 10px; overflow: hidden;">
+        <img src="https://i0.hdslb.com/bfs/archive/7c2d9f8e1b0a4c3d9e8f7a6b5c4d3e2f1a0b9c8d.jpg"
+             alt="点击播放视频"
+             style="width: 100%; height: 100%; object-fit: cover;">
+    </div>
+</div>
 
-        <div style="width: 100%; display: flex; justify-content: center; margin-top: 20px;">
+
+
+      <div style="width: 100%; display: flex; justify-content: center; margin-top: 20px;">
+    <div class="video-container" 
+         data-bvid="BV1zi6fBPE7v"
+         style="width: 100%; max-width: 900px; height: 50vw; max-height: 500px;
+                background: #000; display: flex; align-items: center; justify-content: center;
+                cursor: pointer; border-radius: 10px; overflow: hidden;">
+        <img src="https://i0.hdslb.com/bfs/archive/8f3f1c9f3c0e3b8e4e2c1d9e9c6a7b8d9f0a1b2c.jpg"
+             alt="点击播放视频"
+             style="width: 100%; height: 100%; object-fit: cover;">
+    </div>
+</div>
+
+
+        <script>
+document.querySelectorAll(".video-container").forEach(container => {
+    container.onclick = function () {
+        const bvid = this.getAttribute("data-bvid");
+        this.innerHTML = `
             <iframe 
-                style="width: 100%; max-width: 900px; height: 50vw; max-height: 500px;"
-                src="https://player.bilibili.com/player.html?bvid=BV1oF6fBZELx&autoplay=1&loop=1&playlist=BV1oF6fBZELx&muted=1"
+                style="width: 100%; height: 100%;"
+                src="https://player.bilibili.com/player.html?bvid=${bvid}&autoplay=1&loop=1&playlist=${bvid}&muted=1"
                 frameborder="0"
                 allowfullscreen>
             </iframe>
-        </div>
+        `;
+        this.style.cursor = "default";
+    };
+});
+</script>
 
         <!-- Giscus 评论区开始 -->
         <script src="https://giscus.app/client.js"
