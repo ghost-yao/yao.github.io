@@ -129,17 +129,23 @@
             textElement.appendChild(span);
         });
     </script>
-    <!-- 背景音乐（静音自动播放） -->
-<audio id="bgm" src="https://pub-5efa0d5e4e664fffb87c7ddd05564df6.r2.dev/music/%E5%A0%95.mp3" autoplay loop muted></audio>
+   <!-- 背景音乐（静音自动播放） -->
+<audio id="bgm" 
+       src="https://pub-5efa0d5e4e664fffb87c7ddd05564df6.r2.dev/music/%E5%A0%95.mp3" 
+       autoplay 
+       loop 
+       muted>
+</audio>
 
 <script>
-    // 用户第一次点击页面后，取消静音并开始播放
     document.addEventListener("click", function () {
         const audio = document.getElementById("bgm");
         audio.muted = false;
+        audio.volume = 0.35; // 🎵 音量大小（0.0 ~ 1.0），你可以改
         audio.play();
     }, { once: true });
 </script>
+
 
 
 </body>
