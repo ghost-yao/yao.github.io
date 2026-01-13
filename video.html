@@ -173,9 +173,12 @@ document.addEventListener("click", function (e) {
 
 // 视频点击播放
 document.querySelectorAll(".video-container").forEach(container => {
-    container.onclick = function () {
+    container.onclick = function (e) {
 
-        // 1. 点击视频封面时暂停背景音乐（关键）
+        // 阻止点击事件冒泡到 document
+        e.stopPropagation();
+
+        // 1. 点击视频封面时暂停背景音乐
         if (!bgm.paused) {
             bgm.pause();
         }
@@ -193,13 +196,14 @@ document.querySelectorAll(".video-container").forEach(container => {
             </video>
         `;
 
-        // 3. 设置视频音量（你需要的 0.2）
+        // 3. 设置视频音量
         const v = this.querySelector("#playing-video");
         v.volume = 0.1;
 
         this.style.cursor = "default";
     };
 });
+
 
 
 </script>
