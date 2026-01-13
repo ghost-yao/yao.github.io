@@ -181,13 +181,18 @@ document.querySelectorAll(".video-container").forEach(container => {
         const videoUrl = this.getAttribute("data-src");
 
         this.innerHTML = `
-            <video 
-                src="${videoUrl}" 
-                controls 
-                autoplay 
-                style="width: 100%; height: 100%; object-fit: contain; background: #000;">
-            </video>
-        `;
+    <video 
+        id="playing-video"
+        src="${videoUrl}" 
+        controls 
+        autoplay 
+        style="width: 100%; height: 100%; object-fit: contain; background: #000;">
+    </video>
+`;
+
+const v = this.querySelector("#playing-video");
+v.volume = 0.2;
+
 
         this.style.cursor = "default";
     };
