@@ -175,28 +175,32 @@ document.addEventListener("click", function (e) {
 document.querySelectorAll(".video-container").forEach(container => {
     container.onclick = function () {
 
-        // 点击视频时暂停背景音乐
-        if (!bgm.paused) bgm.pause();
+        // 1. 点击视频封面时暂停背景音乐（关键）
+        if (!bgm.paused) {
+            bgm.pause();
+        }
 
         const videoUrl = this.getAttribute("data-src");
 
+        // 2. 插入 video 标签
         this.innerHTML = `
-    <video 
-        id="playing-video"
-        src="${videoUrl}" 
-        controls 
-        autoplay 
-        style="width: 100%; height: 100%; object-fit: contain; background: #000;">
-    </video>
-`;
+            <video 
+                id="playing-video"
+                src="${videoUrl}" 
+                controls 
+                autoplay 
+                style="width: 100%; height: 100%; object-fit: contain; background: #000;">
+            </video>
+        `;
 
-const v = this.querySelector("#playing-video");
-v.volume = 0.2;
-
+        // 3. 设置视频音量（你需要的 0.2）
+        const v = this.querySelector("#playing-video");
+        v.volume = 0.1;
 
         this.style.cursor = "default";
     };
 });
+
 
 </script>
 
