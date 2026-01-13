@@ -174,19 +174,25 @@ document.addEventListener("click", function (e) {
 // 视频点击播放
 document.querySelectorAll(".video-container").forEach(container => {
     container.onclick = function () {
+
+        // 点击视频时暂停背景音乐
         if (!bgm.paused) bgm.pause();
 
-        const bvid = this.getAttribute("data-bvid");
+        const videoUrl = this.getAttribute("data-src");
+
         this.innerHTML = `
-            <iframe 
-                style="width: 100%; height: 100%;"
-                src="https://player.bilibili.com/player.html?bvid=${bvid}&autoplay=1&loop=1&playlist=${bvid}&muted=1"
-                frameborder="0"
-                allowfullscreen>
-            </iframe>
+            <video 
+                src="${videoUrl}" 
+                controls 
+                autoplay 
+                style="width: 100%; height: 100%; object-fit: contain; background: #000;">
+            </video>
         `;
+
+        this.style.cursor = "default";
     };
 });
+
 </script>
 
 </body>
