@@ -64,8 +64,8 @@
         <h1>视频展示</h1>
         <p>这是之前做过的一些视频</p>
 
-      <div style="width: 100%; display: flex; justify-content: center; margin-top: 20px;">
-    <div class="video-container" 
+     <div style="width: 100%; display: flex; justify-content: center; margin-top: 20px;">
+    <div class="video-container"
          data-src="https://pub-5efa0d5e4e664fffb87c7ddd05564df6.r2.dev/video/tianyizonghecheng.mp4"
          style="width: 100%; max-width: 900px; height: 50vw; max-height: 500px;
                 background: #000; display: flex; align-items: center; justify-content: center;
@@ -78,9 +78,10 @@
 
 
 
-      <div style="width: 100%; display: flex; justify-content: center; margin-top: 20px;">
-    <div class="video-container" 
-        data-src="https://pub-5efa0d5e4e664fffb87c7ddd05564df6.r2.dev/video/qianfengwang.mp4"
+
+    <div style="width: 100%; display: flex; justify-content: center; margin-top: 20px;">
+    <div class="video-container"
+         data-bvid="BV1zi6fBPE7v"
          style="width: 100%; max-width: 900px; height: 50vw; max-height: 500px;
                 background: #000; display: flex; align-items: center; justify-content: center;
                 cursor: pointer; border-radius: 10px; overflow: hidden;">
@@ -89,6 +90,8 @@
              style="width: 100%; height: 100%; object-fit: cover;">
     </div>
 </div>
+
+
 
 
        
@@ -175,35 +178,49 @@ document.addEventListener("click", function (e) {
 document.querySelectorAll(".video-container").forEach(container => {
     container.onclick = function (e) {
 
-        // 阻止点击事件冒泡到 document
         e.stopPropagation();
 
-        // 1. 点击视频封面时暂停背景音乐
+        // 暂停背景音乐
         if (!bgm.paused) {
             bgm.pause();
         }
 
         const videoUrl = this.getAttribute("data-src");
+        const bvid = this.getAttribute("data-bvid");
 
-        // 2. 插入 video 标签
-        this.innerHTML = `
-            <video 
-                id="playing-video"
-                src="${videoUrl}" 
-                controls 
-                autoplay 
-                style="width: 100%; height: 100%; object-fit: contain; background: #000;">
-            </video>
-        `;
+        // 如果是 R2 视频
+        if (videoUrl) {
+            this.innerHTML = `
+                <video 
+                    id="playing-video"
+                    src="${videoUrl}" 
+                    controls 
+                    autoplay 
+                    style="width: 100%; height: 100%; object-fit: contain; background: #000;">
+                </video>
+            `;
+            const v = this.querySelector("#playing-video");
+            v.volume = 0.1;
+        }
 
-        // 3. 设置视频音量
-        const v = this.querySelector("#playing-video");
-        v.volume = 0.1;
+        // 如果是 B 站视频
+        if (bvid) {
+            this.innerHTML = `
+                <iframe 
+                    src="https://player.bilibili.com/player.html?bvid=${bvid}&autoplay=1"
+                    scrolling="no" 
+                    border="0" 
+                    frameborder="no" 
+                    framespacing="0" 
+                    allowfullscreen="true"
+                    style="width: 100%; height: 100%;">
+                </iframe>
+            `;
+        }
 
         this.style.cursor = "default";
     };
 });
-
 
 
 </script>
